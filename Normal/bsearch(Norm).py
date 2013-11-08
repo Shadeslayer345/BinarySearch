@@ -86,7 +86,7 @@ else:
 time.sleep(2)
 decisionTwo = raw_input("\nNow, lets sort this List shall we? =======> (Y/N) ")
 if decisionTwo == "Y" or "y":
-	print "\nHere you go...now isn't that better?"
+	print "\nHere you go...better right?"
 	smartBubbleSort(Lists[listIndex])
 else:
 	print "Well I guess you're alittle lost."
