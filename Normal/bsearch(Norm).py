@@ -9,33 +9,6 @@ Lists = {
 	3 : userList,
 } 
 listIndex = 0
-'''Code To Either Select A List'''
-print "Hello, we are going to sort and search a list"
-decisionTime = raw_input("Firstly, would you like to use a list I've generated?(Y/N) ======> ")
-'''User Has Choosen To Populate Their Own List'''
-if decisionTime == ("N" or "n"):
-	listIndex = 3
-	print "Okey Dokey, well now lets setup your list"
-	numOfList = int(input("Enter the number of integers you want in the List ======> "))
-	for x in xrange(numOfList):
-		i = int(input("Enter a number to add to the list(Make sure your numbers are random and not sorted =======> "))
-		userList.append(i)
-		time.sleep(1)
-		print "Adding %d to the list" %i
-		time.sleep(1)
-		print "Added %d to the list" %i
-
-	'''User Has Choosen To Use A Prepopulated and Randomized List'''
-elif decisionTime == ("Y" or "y"):
-	print "Ok, well I have two lists for you... one short one, one long"
-	listIndex = int(input("Which list would you like to use (1 or 2) ======>"))
-	print Lists[listIndex]
-
-	#User Has Entered Unsupported Variable
-else:
-	print "HAHAHA Very Funny, please enter a specified variable(upper or lowercase)"
-
-whatYouWant = int(input("And Finally, enter what value you want to search for..... =======> "))
 
 '''Function To Sort The List'''
 #An off-shoot of the Bubble Sort but more efficient in my opinion
@@ -43,6 +16,7 @@ whatYouWant = int(input("And Finally, enter what value you want to search for...
 def smartBubbleSort(l):
 	sorted = False
 	print "\nBubble Sorting List......."
+	time.sleep(1)
 	while not sorted:
 		sorted = True
 		for x in xrange(len(l)-1,0,-1): 
@@ -55,9 +29,7 @@ def smartBubbleSort(l):
 	print l
 
 '''Function To Search The Sorted List'''
-
-def binarySearch(l, s):
-	smartBubbleSort(l)
+def search(l, s):
 	print "\nBinary Searching........."
 	found = False
 	startSearchParameter = 0
@@ -67,13 +39,59 @@ def binarySearch(l, s):
 		middleValue = ((startSearchParameter+endSearchParameter)/2)
 		if searchValue == l[middleValue]:
 			found = True
-			return "\nSearch value found at position %d" %middleValue
+			return middleValue
 		else:	
 			if searchValue < l[middleValue]:
 				endSearchParameter = middleValue - 1
 			else:
 				startSearchParameter = middleValue + 1
 	if not found:
-		return "Search Value not found.... %d does not appear to be in the given list" %searchValue
+			return -1
 
+''' Final Main Function To Sort And Search The List '''
+def binarySearch(l, s):
+	message = search(l,s)
+	if message == -1:
+		print "\nSearch Value not found.... %d does not appear to be in the given list" %s
+	else:
+		print "\nSearch value found at position %d" %message
+
+''' Main User Interaction Code '''
+'''Code To Either Select A List'''
+print "\nHello, we are going to sort and search a list"
+decisionOne = raw_input("Firstly, would you like to use a list I have generated? (Y/N) ======> ")
+'''User Has Choosen To Populate Their Own List'''
+if decisionOne == ("N" or "n"):
+	listIndex = 3
+	print "Okey Dokey, well now lets setup your list"
+	numOfList = int(input("Enter the number of integers you want in the List ======> "))
+	for x in xrange(numOfList):
+		i = int(input("Enter a number to add to the list(Make sure your numbers are random and not sorted =======> "))
+		userList.append(i)
+		time.sleep(1)
+		print "Adding %d to the list" %i
+		time.sleep(1)
+		print "Added %d to the list" %i
+
+	'''User Has Choosen To Use A Prepopulated and Randomized List'''
+elif decisionOne == ("Y" or "y"):
+	print "Ok, well I have two lists for you... one short one, one long"
+	listIndex = int(input("Which list would you like to use (1 or 2) ======>"))
+	print Lists[listIndex]
+
+	#User Has Entered Unsupported Variable
+else:
+	print "HAHAHA Very Funny, please enter a specified variable(upper or lowercase)"
+
+time.sleep(2)
+decisionTwo = raw_input("\nNow, lets sort this List shall we? =======> (Y/N) ")
+if decisionTwo == "Y" or "y":
+	print "\nHere you go...now isn't that better?"
+	smartBubbleSort(Lists[listIndex])
+else:
+	print "Well I guess you're alittle lost."
+	print "Let's sort anyway..."
+	smartBubbleSort(Lists[listIndex])
+
+whatYouWant = int(input("\nAnd Finally, enter what value you want to search for..... =======> "))
 binarySearch(numList2, whatYouWant)
