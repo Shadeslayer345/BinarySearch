@@ -1,6 +1,6 @@
 import time, sys, os
 
-#numList = [0,26,40,100,0,0,0,0,30,12,1,4,4,5,7,15,8,98,7,84,841,864,1,196,41,654,1684,15641,96,481,361687,564,84641,9841,48]
+numList = [0,26,40,100,0,0,0,0,30,12,1,4,4,5,7,15,8,98,7,84,841,864,1,196,41,654,1684,15641,96,481,361687,564,84641,9841,48]
 numList2 = [1254,100,1000000,1,974487,98555,9687,78,4586]
 userList = []
 Lists = {
@@ -45,8 +45,7 @@ def smartBubbleSort(l):
 	print "\nBubble Sorting List......."
 	while not sorted:
 		sorted = True
-		for x in xrange(len(l)-1,0,-1):
-			print str(l[x]) + " < " + str(l[x-1]) 
+		for x in xrange(len(l)-1,0,-1): 
 			if l[x] < l[x-1]:
 				temp = l[x]
 				l[x]  = l[x-1]
