@@ -76,7 +76,7 @@ if decisionOne == ("N" or "n"):
 	'''User Has Choosen To Use A Prepopulated and Randomized List'''
 elif decisionOne == ("Y" or "y"):
 	print "Ok, well I have two lists for you... one short one, one long"
-	listIndex = int(input("Which list would you like to use (1 or 2) ======>"))
+	listIndex = int(input("Which list would you like to use (1 or 2) ======> "))
 	print Lists[listIndex]
 
 	#User Has Entered Unsupported Variable
